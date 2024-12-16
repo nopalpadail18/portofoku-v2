@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react"; // Impor useState
-import dynamic from "next/dynamic";
-import { Suspense } from "react";
-import Hero from "./components/hero";
-import Lazyloading from "./components/lazyloading";
+import React, { useEffect, useState } from "react";
+import Hero from "../components/hero";
+import Lazyloading from "../components/lazyloading";
+import Navbar from "../components/navbar";
+import About from "../components/about";
 
 export default function Home() {
   const [loadingPreloader, setLoadingPreloader] = useState(true);
@@ -22,7 +22,6 @@ export default function Home() {
         setEndedLoading(true);
       }, 3000);
 
-      // Cleanup function to clear timeouts if the component unmounts
       return () => {
         clearTimeout(preloaderTimeout);
         clearTimeout(endedLoadingTimeout);
@@ -42,7 +41,9 @@ export default function Home() {
 
   return (
     <>
+      <Navbar />
       <Hero />
+      <About />
     </>
   );
 }
